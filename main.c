@@ -20,7 +20,7 @@ float rand_float(float min_value, float max_value) {
 void *routine(void *param) {
     int i;
     int *n_points_p = (int *) param;
-    int* n_points_in_circle = malloc(sizeof(int));
+    int* n_points_in_circle = malloc(sizeof(int*));
 
     for (i = 0; i < *n_points_p; i++) {
         float x = rand_float(-1, 1), y = rand_float(-1, 1);
@@ -69,24 +69,28 @@ int main() {
     srand(time(NULL));
 
     int i, j;
+    float error_rate;
 
     int n_threads_settings[] = {2, 4, 6, 8};
     int n_points_settings[] = {20000, 100000, 1000000, 10000000};
 
-    double pi = monte_carlo(n_points_settings[3], n_threads_settings[3]);
-    printf("For %d threads and %d points the approximation of pi is %lf\n", n_threads_settings[3], n_points_settings[3], pi);
+    for (i = 0; i < 4; i++){
+        int n_points = n_points_settings[i];
+        for (j = 0; j < 4; j++) {
+            int n_threads = n_threads_settings[j];
 
-    
+            double approx_pi = monte_carlo(n_points, n_threads);
 
-    // for (i = 0; i < 4; i++){
-    //     int n_points = n_points_settings[i];
-    //     for (j = 0; j < 4; j++) {
-    //         int n_threads = n_threads_settings[j];
+            // error_rate = (M_PI - approx_pi) / M_PI * 100;
 
-    //         double pi = monte_carlo(n_points, n_threads);
-    //         printf("For %d threads and %d points the approximation of pi is %lf\n", n_threads, n_points, pi);
-    //     }
-    // }
+            // printf("--------------------------------------\n");
+            // printf("Settings:\tn_threads = %d\tn_points = %d\n", n_threads, n_points);
+            // printf("The approximation of pi using these settings is %lf.\n", approx_pi);
+            // printf("The error rate for this approximation of pi is %f%%\n", error_rate);
+
+            printf("For %d threads and %d points the approximation of pi is %lf\n", n_threads, n_points, approx_pi);
+        }
+    }
 
     return 0;
 }
