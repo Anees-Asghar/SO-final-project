@@ -18,20 +18,21 @@ float rand_float(float min_value, float max_value) {
 
 
 void *routine(void *param) {
-    int i;
+    int i = 0, n_points_in_circle = 0;
     int *n_points_p = (int *) param;
-    int* n_points_in_circle = malloc(sizeof(int*));
+    int* presult = malloc(sizeof(int*));
 
     for (i = 0; i < *n_points_p; i++) {
         float x = rand_float(-1, 1), y = rand_float(-1, 1);
         int is_point_in_circle = point_in_circle(x, y);
 
         if (is_point_in_circle) {
-            *n_points_in_circle=*n_points_in_circle+1;
+            n_points_in_circle++;
         }
     }
 
-    return (void*) n_points_in_circle;
+    *presult = n_points_in_circle;
+    return (void*) presult;
 }
 
 float monte_carlo(int n_points, int n_threads) {
