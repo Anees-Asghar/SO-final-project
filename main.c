@@ -27,7 +27,9 @@ void *routine(void *param) {
         int is_point_in_circle = point_in_circle(x, y);
 
         if (is_point_in_circle) {
+            printf("num_points_b4: %ld\n",*n_points_in_circle);
             *n_points_in_circle=*n_points_in_circle+1;
+            printf("num_points_after: %ld\n",*n_points_in_circle);
         }
     }
 
@@ -41,7 +43,7 @@ float monte_carlo(int n_points, int n_threads) {
     pthread_t *threads = malloc(n_threads * sizeof(pthread_t));
     int **result = malloc(n_threads * sizeof(int *));
 
-    int n_points_per_thread  = ceil(n_points / n_threads);
+    int n_points_per_thread  = ceil((double) n_points / n_threads); //the result of operation has to be a double
 
     for (i = 0; i < n_threads; i++) {
         pthread_create(threads+i, NULL, &routine, (void *) &n_points_per_thread);
@@ -50,17 +52,20 @@ float monte_carlo(int n_points, int n_threads) {
     for (i = 0; i < n_threads; i++) {
         pthread_join(threads[i], (void **) result+i);
     }
+ 
 
     for (i = 0; i < n_threads; i++) {
+        printf("result: %d, i: %d\n", *result[i], i);
         n_total_points_in_circle += *result[i];
     }
+    printf("num points in circle: %d, num point thread: %d, threads: %d\n",n_total_points_in_circle, n_points_per_thread, n_threads);
 
     free(threads);
     for (i = 0; i < n_threads; i++) {
         free(result[i]);
     }
     free(result);
-
+            
     pi = (n_total_points_in_circle / (double)(n_points_per_thread * n_threads)) * 4;
     return pi;
 }
@@ -72,9 +77,9 @@ int main() {
     float error_rate;
 
     int n_threads_settings[] = {2, 4, 6, 8};
-    int n_points_settings[] = {20000, 100000, 1000000, 10000000};
+    int n_points_settings[] = {20, 100000, 1000000, 10000000};
 
-    for (i = 0; i < 4; i++){
+    for (i = 0; i < 1; i++){ //4
         int n_points = n_points_settings[i];
         for (j = 0; j < 4; j++) {
             int n_threads = n_threads_settings[j];
@@ -88,7 +93,7 @@ int main() {
             // printf("The approximation of pi using these settings is %lf.\n", approx_pi);
             // printf("The error rate for this approximation of pi is %f%%\n", error_rate);
 
-            printf("For %d threads and %d points the approximation of pi is %lf\n", n_threads, n_points, approx_pi);
+            printf("For %d threads and %d points the approximation of pi is %lf\n\n", n_threads, n_points, approx_pi);
         }
     }
 
