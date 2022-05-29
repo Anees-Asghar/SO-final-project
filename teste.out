@@ -1,0 +1,170 @@
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 3
+num_points_after: 4
+num_points_b4: 4
+num_points_after: 5
+num_points_b4: 5
+num_points_after: 6
+num_points_b4: 6
+num_points_after: 7
+num_points_b4: 7
+num_points_after: 8
+num_points_b4: 8
+num_points_after: 9
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 3
+num_points_after: 4
+num_points_b4: 4
+num_points_after: 5
+num_points_b4: 5
+num_points_after: 6
+num_points_b4: 6
+num_points_after: 7
+result: 7, i: 0
+result: 9, i: 1
+num points in circle: 16, num point thread: 10, threads: 2
+For 2 threads and 20 points the approximation of pi is 3.200000
+
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 3
+num_points_after: 4
+num_points_b4: 4
+num_points_after: 5
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 3
+num_points_after: 4
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+result: 5, i: 0
+result: 3, i: 1
+result: 3, i: 2
+result: 4, i: 3
+num points in circle: 15, num point thread: 5, threads: 4
+For 4 threads and 20 points the approximation of pi is 3.000000
+
+num_points_b4: 4090478593
+num_points_after: 4090478594
+num_points_b4: 4090478594
+num_points_after: 4090478595
+num_points_b4: 0
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 3
+num_points_after: 4
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+result: -204488701, i: 0
+result: 4, i: 1
+result: 3, i: 2
+result: 3, i: 3
+result: 3, i: 4
+result: 3, i: 5
+num points in circle: -204488685, num point thread: 4, threads: 6
+For 6 threads and 20 points the approximation of pi is -34081448.000000
+
+num_points_b4: 4090462208
+num_points_after: 4090462209
+num_points_b4: 4090462209
+num_points_after: 4090462210
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+num_points_b4: 2
+num_points_after: 3
+num_points_b4: 0
+num_points_after: 1
+num_points_b4: 1
+num_points_after: 2
+result: -204505086, i: 0
+result: 1, i: 1
+result: 3, i: 2
+result: 3, i: 3
+result: 3, i: 4
+result: 3, i: 5
+result: 3, i: 6
+result: 2, i: 7
+num points in circle: -204505068, num point thread: 3, threads: 8
+For 8 threads and 20 points the approximation of pi is -34084176.000000
+
