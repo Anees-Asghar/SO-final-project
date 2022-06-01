@@ -89,7 +89,7 @@ int main()
     srand(time(NULL));
 
     int i, j, n_points, n_threads;
-    double approx_pi, _sd;
+    double approx_pi, rel_error;
     int thread_options[] = {2, 4, 6, 8};
     int point_options[] = {20000, 100000, 1000000, 10000000};
 
@@ -106,7 +106,7 @@ int main()
             printf("No. of points: %d\n", n_points);
             printf("No. of threads: %d\n", n_threads);
             printf("Approximation of pi: %.16lf\n", approx_pi);
-            printf("Standart Variation: %.16lf\n\n", _sd);
+            printf("Relative Error: %.16lf\n\n", rel_error);
         }
     }
     return 0;
