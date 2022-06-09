@@ -87,13 +87,12 @@ float monte_carlo(int n_points, int n_threads)
 
 int main()
 {
-    srand(time(NULL));
+    srand(time(NULL)); // to generate random numbers
 
     int i, j, n_points, n_threads;
-    double approx_pi, rel_error, os_time_spent;
-    clock_t os_start, os_end;
-    struct timeval wc_start, wc_end;
-    long wc_seconds, wc_microseconds;
+    double approx_pi, rel_error;
+    struct timespec start, end;
+    float time_spent;
 
     int thread_options[] = {2, 4, 6, 8};
     int point_options[] = {20000, 100000, 1000000, 10000000};
@@ -101,35 +100,27 @@ int main()
     // simulate monte carlo and print performance metrics for each set of options
     for (i = 0; i < 4; i++)
     {
-        n_points = point_options[i];
+        n_points = point_options[i]; // number of points to be generated
 
         for (j = 0; j < 4; j++)
         {
-            os_time_spent = 0.0;
-            n_threads = thread_options[j];
+            n_threads = thread_options[j]; // number of threads to be used
 
-            // run and time monte carlo with this set of settings
-            os_start = clock();
-            gettimeofday(&wc_start, NULL);
+            clock_gettime(CLOCK_REALTIME, &start);        // store start time
+            approx_pi = monte_carlo(n_points, n_threads); // run monte carlo
+            clock_gettime(CLOCK_REALTIME, &end);          // store end time
 
-            approx_pi = monte_carlo(n_points, n_threads);
+            // calculate time spent to run monte carlo function
+            time_spent = (end.tv_sec - start.tv_sec) + 1e-9*(end.tv_nsec - start.tv_nsec);
 
-            os_end = clock();
-            gettimeofday(&wc_end, NULL);
-
-            os_time_spent += (double)(os_end - os_start) / CLOCKS_PER_SEC;
-            wc_seconds = (wc_end.tv_sec - wc_start.tv_sec);
-            wc_microseconds = ((wc_seconds * 1000000) + wc_end.tv_usec) - (wc_start.tv_usec);
-            
             rel_error = fabs(M_PI - approx_pi) / M_PI; // compute relative error
 
-            // performance metrics
+            // print results for this pair of settings
             printf("Number of points: %d\n", n_points);
             printf("Number of threads: %d\n", n_threads);
             printf("Approximation of pi: %.16lf\n", approx_pi);
             printf("Relative Error: %.16lf\n", rel_error);
-            printf("Elapsed time (Operating System): %lf seconds\n", os_time_spent);
-            printf("Elapsed time (Wall Clock Time): %ld s and %ld ms\n\n", wc_seconds, wc_microseconds);
+            printf("Time elapsed (Wall-Clock Time): %fs\n\n", time_spent);
         }
     }
 
